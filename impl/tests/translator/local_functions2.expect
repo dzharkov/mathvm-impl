@@ -1,0 +1,33 @@
+function [0] void <top>()
+locals: 0
+0: CALL *3
+3: CALL *1
+6: CALL *2
+9: RETURN
+function [1] void bar()
+locals: 0
+0: RETURN
+function [2] void baz()
+locals: 0
+0: RETURN
+function [3] void foo()
+locals: 0
+0: RETURN
+function [4] void bar()
+locals: 0
+0: CALL *3
+3: CALL *4
+6: CALL *6
+9: RETURN
+function [5] void baz()
+locals: 0
+0: CALL *3
+3: CALL *4
+6: CALL *5
+9: RETURN
+function [6] void baz()
+locals: 0
+0: CALL *3
+3: CALL *4
+6: CALL *6
+9: RETURN

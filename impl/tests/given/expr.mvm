@@ -1,0 +1,25 @@
+int i;
+int j;
+int k;
+
+double y;
+double z;
+double t;
+
+y = 11.0;
+t = 7.0;
+
+z = t + 2.0 * y - 1.0;
+print(z, '\n');
+
+z = (t + 2.0) * y - 1.0;
+print(z, '\n');
+
+i = 2;
+j = 7;
+
+k = j / 2 + 1;
+print(k, '\n');
+
+k = j * i / -3;
+print(k, '\n');

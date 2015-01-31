@@ -1,0 +1,5 @@
+function int f(int x) {
+    return x + 1;
+}
+
+print ('f(2) = ', f(2), '\n');

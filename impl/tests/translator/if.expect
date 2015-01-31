@@ -1,0 +1,16 @@
+function [0] void <top>()
+locals: 0
+0: ILOAD1
+1: ILOAD0
+2: IFICMPE 7
+5: ILOAD1
+6: POP
+7: ILOAD1
+8: ILOAD0
+9: IFICMPE 17
+12: ILOAD1
+13: POP
+14: JA 27
+17: ILOAD 2
+26: POP
+27: RETURN

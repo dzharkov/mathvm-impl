@@ -1,0 +1,10 @@
+string x;
+string y;
+string z;
+
+x = 'abc';
+y = 'def';
+z = 'abc';
+
+print(x == y);
+print(x == z);

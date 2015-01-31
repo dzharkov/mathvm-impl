@@ -1,0 +1,40 @@
+function [0] void <top>()
+locals: 0
+0: RETURN
+function [1] void foo1()
+locals: 0
+0: RETURN
+function [2] void foo2()
+locals: 0
+0: RETURN
+1: ILOAD1
+2: POP
+3: RETURN
+4: SLOAD0
+5: POP
+6: RETURN
+function [3] int foo3()
+locals: 0
+0: ILOAD0
+1: RETURN
+2: SLOAD @1
+5: S2I
+6: RETURN
+7: DLOAD0
+8: D2I
+9: RETURN
+function [4] double foo4()
+locals: 0
+0: ILOAD0
+1: I2D
+2: RETURN
+3: SLOAD @1
+6: S2I
+7: I2D
+8: RETURN
+9: DLOAD0
+10: RETURN
+function [5] string foo5()
+locals: 0
+0: SLOAD @2
+3: RETURN

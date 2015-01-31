@@ -1,0 +1,34 @@
+string s;
+string s1;
+
+s = 'Hello';
+function int strlen(string s) native 'strlen';
+function string malloc(int len) native 'malloc';
+function void free(string s) native 'free';
+function string strcat(string s1, string s2) native 'strcat';
+function string strcpy(string dst, string src) native 'strcpy';
+
+print('strlen of ', s , ' is ', strlen(s), '\n');
+
+function string concat(string s1, string s2) {
+    string result;
+    result = malloc(strlen(s1)+strlen(s2) + 1);
+    strcpy(result, s1);
+    strcat(result, s2);
+    return result;
+}
+
+s1 = concat(s, ' kitty');
+print('concat ', s1, '\n');
+free(s1);
+
+function double sin(double x) native 'sin';
+print('sin(1.0) ', sin(1.0), '\n');
+
+function double pow(double x, double y) native 'pow';
+print('pow(8, 1/3) ', pow(8.0, 1.0/3.0), '\n');
+
+//int ch;
+//function int getchar() native 'getchar';
+//print('press any key\n');
+//ch = getchar();

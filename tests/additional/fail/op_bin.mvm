@@ -1,0 +1,7 @@
+string x;
+double y;
+
+x = 'abc';
+y = 3.4;
+
+print(x * y);

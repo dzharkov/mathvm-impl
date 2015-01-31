@@ -1,0 +1,4 @@
+string x;
+
+x = 'abc';
+print(-x);

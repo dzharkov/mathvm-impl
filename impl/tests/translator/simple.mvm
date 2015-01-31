@@ -1,0 +1,8 @@
+int y;
+y = 1;
+
+function void bar() {
+    int x;
+    x = 1;
+}
+

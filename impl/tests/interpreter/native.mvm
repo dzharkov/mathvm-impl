@@ -1,0 +1,24 @@
+
+function double sqrt(double x) native 'sqrt';
+function int strlen(string s) native 'strlen';
+
+print(sqrt(2.0), '\n');
+
+print('abcd=', strlen('abcd'), '\n');
+print('=', strlen(''), '\n');
+
+function void printf(string s, double x1, double x2, double x3, double x4, double x5, double x6, double x7, double x8, double x9, double x10, int y1, int y2, int y3, int y4, int y5, int y6, int y7, int y8, int y9, int y10, int y11, string z) native 'printf';
+
+
+printf('%lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %lld %lld %lld %lld %lld %lld %lld %lld %lld %lld %lld %s\n', 1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10, 11, 'abc');
+
+function void printf1(
+    string s, double x1, double x2, double x3, double x4, double x5, double x6, double x7, double x8, double x9, double x10,
+    int y1, int y2, int y3, int y4, int y5, int y6, int y7, int y8, int y9, int y10, int y11, string z1,
+    int y13, double x11, string z2) native 'printf';
+
+
+printf1('%lf %lf %lf %lf %lf %lf %lf %lf %lf %lf %lld %lld %lld %lld %lld %lld %lld %lld %lld %lld %lld %s %lld %lf %s\n', 1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,11, 'abc', 1, 2, '3');
+
+
+

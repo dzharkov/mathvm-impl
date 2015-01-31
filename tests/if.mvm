@@ -1,0 +1,27 @@
+int x;
+int y;
+
+x = 7;
+y = 8;
+
+if (x < y && y > 1 && !(x < 2)) {
+    print('1: Less\n');
+}
+
+if (x == y) {
+    print('2: Equal\n');
+} else {
+    print('2: Different\n');
+}
+
+if (x <= 7) {
+    print('3: Lesser\n');
+} else {
+    print('3: Greater\n');
+}
+
+if (x >= 77) {
+    print('4: Greater\n');
+} else {
+    print('4: Lesser\n');
+}

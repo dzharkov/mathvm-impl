@@ -1,0 +1,28 @@
+function void foo() {
+    function void bar() {
+        function void baz() {
+            foo();
+            bar();
+            baz();
+        }
+        foo();
+        bar();
+        baz();
+    }
+    function void baz() {
+        foo();
+        bar();
+        baz();
+    }
+}
+
+function void bar() {
+
+}
+
+function void baz() {
+
+}
+foo();
+bar();
+baz();

@@ -1,0 +1,140 @@
+int WIDTH;
+WIDTH = 640;
+int HEIGHT;
+HEIGHT = 480;
+int BPP;
+BPP = 32;
+
+function void setMem(string base, int offset, int value, int width) native 'unsafe_setMem';
+function int getMem(string base, int offset, int width) native 'unsafe_getMem';
+function int videoInitFramebuffer(int width, int height, int bpp, int fullscreen) native 'unsafe_videoInitFramebuffer';
+function void videoDenitFramebuffer() native 'unsafe_videoDeinitFramebuffer';
+function int videoCheckEvent() native 'unsafe_videoCheckEvent';
+function string videoGrabFramebuffer() native 'unsafe_videoGrabFramebuffer';
+function void videoReleaseFramebuffer() native 'unsafe_videoReleaseFramebuffer';
+
+function void setPixel(string mem, int x, int y, int r, int g, int b) {
+    int color;
+    if (y >= HEIGHT || x >= WIDTH) {
+      //print('out of bounds ', x, ' ', y, '\n');
+      return;
+    }
+    color = (r % 256) * 65536 + (g % 256) *256 + (b % 256);
+    setMem(mem, (x + y*WIDTH) * BPP / 8 , color, 4);
+}
+
+function int timestamp() native 'native_timestamp';
+
+function double sinNative(double x) native 'sin';
+function double cosNative(double x) native 'cos';
+
+function int fact(int n) {
+  int res;
+  int i;
+  res = 1;
+  for(i in 2..n) {
+    res = res * i;
+  }
+  return res;
+}
+function double pow(double x, double y) native 'pow';
+
+int PREC;
+PREC = 10;
+
+function double sinMvm(double x) {
+  int i;
+  double res;
+  res = 0;
+  x = x - 6.28 * int(x / 6.28)
+  for(i in 0..PREC) {
+    res += pow(-1.0, i) / fact(2*i + 1) * pow(x, 2*i + 1);
+  }
+  if (res > 1.0) {
+    return 1.0;
+  }
+  if (res < -1.0) {
+    return -1.0;
+  }
+  return res;
+}
+
+function double cosMvm(double x) {
+  int i;
+  double res;
+  res = 0;
+  x = x - 6.28 * int(x / 6.28);
+  for(i in 0..PREC) {
+    res += pow(-1.0, i) / fact(2*i) * pow(x, 2*i);
+  }
+  if (res > 1.0) {
+    return 1.0;
+  }
+  if (res < -1.0) {
+    return -1.0;
+  }
+  return res;
+}
+
+
+function int int(double d) {
+    return 0 + d;
+}
+
+double t;
+t = 0.0;
+double chainsaw;
+chainsaw = 0.01;
+
+function void clrScr(string fb) {
+  int y; int x;
+  for (y in 0..(HEIGHT-1)) {
+    for (x in 0..(WIDTH-1)) {
+      setPixel(fb, x, y, 0, 0, 0);
+    }
+  }
+}
+
+function void drawFrame() {
+  string fb;
+  fb = videoGrabFramebuffer();
+  if (!fb) {
+    print('fb', fb, '\n');
+    return;
+  }
+  double tOld;
+  tOld = t;
+  clrScr(fb);
+  while(t < tOld + 100.0) {
+    setPixel(fb, 
+        int(WIDTH / 2 * (cosMvm(chainsaw * t) + 1.0)),
+        int(HEIGHT / 2 * (sinMvm(t) + 1.0)),
+        255, 255, 255);
+    t += 0.01;
+  }
+  videoReleaseFramebuffer();
+}
+
+
+if (videoInitFramebuffer(WIDTH, HEIGHT, BPP, 0) == 0) {
+  print('Cannot init video\n');
+  return;
+}
+
+sinMvm(0);
+cosMvm(0);
+
+int start;
+while (videoCheckEvent() == 0) {
+  chainsaw = 0.01;
+  start = timestamp();
+  while(chainsaw < 1.0) {
+    drawFrame();
+    chainsaw += 0.01;
+  }
+  print('Rendered all lissajous by ', 
+    (timestamp() - start) / 1000000,
+    ' secs', '\r\n');
+}
+
+videoDenitFramebuffer();

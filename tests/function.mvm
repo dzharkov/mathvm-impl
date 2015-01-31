@@ -1,0 +1,49 @@
+function int add(int x, int y) {
+    return x + y;
+}
+
+function void doit() {
+    print('Hi\n');
+}
+
+function double mul5(int max, double x1, double x2, double x3, double x4, double x5) {
+    double r;
+
+    r = 1.0;
+
+    if (max > 1) {
+        r = r * x1;
+    }
+
+    if (max > 2) {
+        r = r * x2;
+    }
+
+    if (max > 3) {
+        r = r * x3;
+    }
+
+    if (max > 4) {
+        r = r * x4;
+    }
+
+    if (max > 5) {
+        r = r * x5;
+    }
+
+    return r;
+}
+
+function int fact(int n) {
+    if (n < 3) {
+        return n;
+    }
+    return n*fact(n-1);
+}
+
+print(add(2, 3), '\n');
+doit();
+print(mul5(2, 2.0, 0.0, 0.0, 0.0, 0.0), '\n');
+print(mul5(4, 2.0, 3.0, 4.0, 5.0, 0.0), '\n');
+print(mul5(5, 2.0, 3.0, 4.0, 5.0, 6.0), '\n');
+print(fact(9),'\n');

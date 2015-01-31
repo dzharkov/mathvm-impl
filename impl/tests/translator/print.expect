@@ -1,0 +1,9 @@
+function [0] void <top>()
+locals: 0
+0: ILOAD1
+1: IPRINT
+2: DLOAD1
+3: DPRINT
+4: SLOAD @1
+7: SPRINT
+8: RETURN

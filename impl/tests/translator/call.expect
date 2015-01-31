@@ -1,0 +1,23 @@
+function [0] void <top>()
+locals: 0
+0: ILOAD1
+1: ILOAD1
+2: I2D
+3: SLOAD @1
+6: CALL *1
+9: DLOAD1
+10: D2I
+11: DLOAD1
+12: SLOAD @1
+15: CALL *1
+18: SLOAD @1
+21: S2I
+22: SLOAD @1
+25: S2I
+26: I2D
+27: SLOAD @1
+30: CALL *1
+33: RETURN
+function [1] void f(int, double, string)
+locals: 3
+0: RETURN

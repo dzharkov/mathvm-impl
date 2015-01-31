@@ -1,0 +1,62 @@
+int WIDTH;
+WIDTH = 1280;
+int HEIGHT;
+HEIGHT = 960;
+int BPP;
+BPP = 32;
+
+function void setMem(string base, int offset, int value, int width) native 'unsafe_setMem';
+function int getMem(string base, int offset, int width) native 'unsafe_getMem';
+function int videoInitFramebuffer(int width, int height, int bpp, int fullscreen) native 'unsafe_videoInitFramebuffer';
+function void videoDenitFramebuffer() native 'unsafe_videoDeinitFramebuffer';
+function int videoCheckEvent() native 'unsafe_videoCheckEvent';
+function string videoGrabFramebuffer() native 'unsafe_videoGrabFramebuffer';
+function void videoReleaseFramebuffer() native 'unsafe_videoReleaseFramebuffer';
+
+function void setPixel(string mem, int x, int y, int r, int g, int b) {
+    int color;
+    color = (r % 256) * 65536 + (g % 256) *256 + (b % 256);
+    setMem(mem, (x + y*WIDTH) * BPP / 8 , color, 4);
+}
+
+function int timestamp() native 'native_timestamp';
+
+int h;
+h = 0;
+function void drawFrame() {
+   string fb;
+   fb = videoGrabFramebuffer();
+   if (!fb) {
+      print('fb', fb, '\n');
+      return;
+   }
+   int y; int x;
+    for (y in 0..(HEIGHT-1)) {
+        for (x in 0..(WIDTH-1)) {
+           setPixel(fb, x, y, (x*x)/256+3*y+h, (y*y)/256+x+h, h);
+       }
+   }
+   videoReleaseFramebuffer();
+   h += 1;
+}
+
+
+if (videoInitFramebuffer(WIDTH, HEIGHT, BPP, 0) == 0) {
+   print('Cannot init video\n');
+   return;
+}
+
+int start;
+start = timestamp();
+int frames;
+frames = 0;
+while (videoCheckEvent() == 0) {
+    drawFrame();
+    int fps;
+    fps = frames * 1000000 / (timestamp() - start);
+    print('FPS ', fps, '\r');
+    frames += 1;
+}
+
+
+videoDenitFramebuffer();

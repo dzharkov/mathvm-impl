@@ -1,0 +1,23 @@
+function void foo() {
+    print('OK\n');
+}
+
+function int bar(int x, double y) {
+    if (x == y) {
+        print('OK\n');
+        return 1;
+    }
+}
+
+function string baz(string x) {
+    return x;
+}
+
+foo();
+bar(1.0, 1);
+
+print(bar(1, 1.0) == 1, '\n');
+print(bar(1, 1.1) == 0, '\n');
+print(2 + bar(1,1)*5, '\n');
+print(2 + bar(1,0)*5, '\n');
+print(baz('OK1\n'));

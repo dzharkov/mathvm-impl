@@ -1,0 +1,25 @@
+int m;
+int n;
+
+function void ack() {
+    if (m > 0) {
+        if (n > 0) {
+            int k;
+            k = m;
+            n = n - 1;
+            ack();
+            n = n + 1;
+            m = k - 1;
+        } else {
+            n = 1;
+            m = m - 1;
+        }
+        ack();
+    }
+}
+
+m = 3;
+n = 10;
+ack();
+
+print(n + 1, '\n');

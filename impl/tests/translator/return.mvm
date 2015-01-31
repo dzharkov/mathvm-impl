@@ -1,0 +1,21 @@
+function void foo1() {
+}
+function void foo2() {
+    return;
+    return 1;
+    return '';
+
+}
+function int foo3() {
+    return 0;
+    return '0';
+    return 0.0;
+}
+function double foo4() {
+    return 0;
+    return '0';
+    return 0.0;
+}
+function string foo5() {
+    return '1';
+}

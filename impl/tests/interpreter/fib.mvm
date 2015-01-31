@@ -1,0 +1,11 @@
+function int fib(int n) {
+    if (n <= 1) {
+        return 1;
+    }
+    return fib(n-1) + fib(n-2);
+}
+
+int i;
+for (i in 0..10) {
+    print(fib(i), '\n');
+}

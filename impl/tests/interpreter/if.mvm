@@ -1,0 +1,21 @@
+if (-100) {
+    print('OK\n');
+}
+
+if (0) {
+    print('Fail1\n');
+}
+
+if (200.0) {
+    print('OK\n');
+} else {
+    print('Fail2\n');
+}
+
+if (0.0) {
+    print('Fail3\n');
+} else {
+    print('OK\n');
+}
+
+print('OK\n');

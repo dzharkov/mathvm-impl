@@ -1,0 +1,8 @@
+
+function void f(int x, double y, string s) {
+
+}
+
+f(1,1,'1');
+f(1.0,1.0,'1');
+f('1','1','1');

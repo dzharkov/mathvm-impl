@@ -1,0 +1,5 @@
+double i;
+string s;
+
+for (i in 1..2) {}
+for (s in 1..2) {}

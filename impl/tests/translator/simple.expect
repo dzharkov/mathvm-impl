@@ -1,0 +1,10 @@
+function [0] void <top>()
+locals: 1
+0: ILOAD1
+1: STOREIVAR0
+2: RETURN
+function [1] void bar()
+locals: 1
+0: ILOAD1
+1: STOREIVAR0
+2: RETURN

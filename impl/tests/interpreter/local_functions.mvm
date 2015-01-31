@@ -1,0 +1,43 @@
+int z0 = 0;
+double z1 = 0;
+string z2 = ''
+int z3 = 0;
+string z4 = '';
+int z5 = 0;
+
+function void foo(int y0, double y1, string y2) {
+    int y3;
+    double y4;
+    double z5;
+
+    function void bar(int x0, double x1, string x2) {
+        int x3 = 1;
+        double x4 = 2;
+        
+        print(z0, '=0\n');
+        print(z4, '=\n');
+        
+        z0 = 7;
+        z4 = 'abc';
+        print(z0, '=7\n');
+        print(z4, '=abc\n');
+        print(x0, x1, x2, x3, x4 '=01012\n');
+
+        y3 = -1;
+    }
+    
+    bar(0, 1.0, '0');
+    print(y3, '=-1\n');
+
+    z1 = 1.5;
+    print(z1,'=1.5\n');
+
+    print(y0, y1, y2, '=000\n');
+}
+
+foo(0,0,'0');
+
+print(z0, '=7\n');
+print(z1, '=1.5\n');
+print(z4, '=abc\n');
+

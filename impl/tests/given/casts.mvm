@@ -1,0 +1,12 @@
+int x;
+double y;
+
+x = 3;
+y = 1.2;
+
+print(x + y, '\n');
+print(y + x, '\n');
+print(x - y, '\n');
+print(y - x, '\n');
+print((y < x) * (y >= x), '\n');
+print((y > x) * (y <= x), '\n');
